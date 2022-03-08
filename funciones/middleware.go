@@ -5,9 +5,11 @@ import (
 	"time"
 )
 
-func MiddlewareLog(f func(string)) func(string) {
+type MyFunction func(string)
+
+func MiddlewareLog(f MyFunction) MyFunction {
 	return func(name string) {
-		fmt.Println(time.Now())
+		fmt.Println(time.Now().Format("15:04:05"))
 		f(name)
 	}
 }
